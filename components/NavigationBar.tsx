@@ -3,7 +3,7 @@
 import Link from 'next/link'
 
 const navigation = [
-    {name:'Monsters',href: '/'},
+    {name:'Monsters',href: '/monsters'},
     {name:'Classes',href: '/classes'},
     {name:'Races',href: '/races'},
     {name:'Magic-items',href: '/magic-items'},

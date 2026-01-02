@@ -60,6 +60,8 @@ export interface SpecialAbilities {
 
 export interface Open5eResponse<T = Monster> {
     count: number;
+    next: string | null;
+    previous: string | null;
     results: T[];
 }
 
@@ -125,3 +127,94 @@ export interface Race {
     traits: string;
     subraces: Subrace[];
 }
+
+export interface RaceCardProps {
+    data: Race;
+}
+
+// Weapon interfaces
+export interface DamageType {
+    name: string;
+    key: string;
+    url?: string;
+}
+
+export interface WeaponProperty {
+    name: string;
+    type: string | null;
+    url?: string;
+    desc: string;
+}
+
+export interface WeaponPropertyAssignment {
+    property: WeaponProperty;
+    detail: string | null;
+}
+
+export interface Weapon {
+    key: string;
+    name: string;
+    slug?: string;
+    damage_dice: string;
+    damage_type: DamageType;
+    range: number | null;
+    long_range: number | null;
+    is_simple: boolean;
+    is_martial?: boolean;
+    is_improvised: boolean;
+    properties: string | WeaponPropertyAssignment[];
+    ranged_attack_possible?: string;
+    range_melee?: string;
+    distance_unit: string;
+}
+
+export interface WeaponCardProps {
+    data: Weapon;
+}
+
+// Magic Item interfaces
+export interface ItemCategory {
+    name: string;
+    key: string;
+}
+
+export interface ItemRarity {
+    name: string;
+    key: string;
+    rank: number;
+}
+
+export interface Armor {
+    name: string;
+    key: string;
+    url: string;
+    category: string;
+    ac_base: number;
+    ac_display: string;
+    ac_add_dexmod: boolean;
+    ac_cap_dexmod: number | null;
+    grants_stealth_disadvantage: boolean;
+    strength_score_required: number | null;
+}
+
+export interface MagicItem {
+    key: string;
+    name: string;
+    slug?: string;
+    desc: string;
+    category: ItemCategory;
+    rarity: ItemRarity;
+    is_magic_item: boolean;
+    weight?: string;
+    weight_unit: string;
+    cost?: string;
+    requires_attunement: boolean;
+    attunement_detail?: string | null;
+    armor?: Armor | null;
+    weapon?: Weapon | null;
+}
+
+export interface MagicItemCardProps {
+    data: MagicItem;
+}
+
